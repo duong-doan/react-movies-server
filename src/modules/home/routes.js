@@ -1,12 +1,12 @@
 import React from "react";
-import Homepage from "./containers/Home";
+import Body from "./containers/Body";
 
 const homeRoutes = [
   {
     path: "/",
     auth: true,
     exact: true,
-    component: <Homepage />,
+    component: <Body />,
   },
 ];
 

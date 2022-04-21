@@ -3,3 +3,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin ani-hover {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.2s cubic-bezier(0.25, 0.78, 0.35, 0.91);
+}
+
+@mixin active-ani-hover {
+  transform: scaleX(100%);
+}
