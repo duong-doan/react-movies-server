@@ -1,0 +1,80 @@
+.section-tale {
+  height: 90vh;
+  background-image: url("../images/slider_top/bg-tale.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 100px;
+  &__body {
+    border-left: 1px solid $column-color;
+    border-right: 1px solid $column-color;
+    height: inherit;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__left {
+      height: 70%;
+      flex: 1;
+      display: flex;
+      .wrapper__img {
+        position: relative;
+        width: 70%;
+        height: 70%;
+        margin: auto;
+
+        .img-1 {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          top: -10%;
+          left: -10%;
+        }
+        .img-2 {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .img-3 {
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          bottom: -10%;
+          right: -10%;
+        }
+      }
+    }
+    &__right {
+      flex: 1;
+      padding-left: 5rem;
+      span {
+        color: $sub-title;
+        font-size: 1.6rem;
+        letter-spacing: 5px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        width: 70%;
+        margin: 2.5rem 0;
+        color: $white;
+        b {
+          text-decoration: line-through;
+          text-decoration-color: $white !important;
+          font-size: inherit;
+        }
+      }
+    }
+
+    .column-middle {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      height: inherit;
+      width: 1px;
+      background: $column-color;
+    }
+  }
+}

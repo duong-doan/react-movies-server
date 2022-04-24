@@ -15,10 +15,10 @@ const Homepage = () => {
   return (
     <div className="home-page">
       <Header />
-      {/* <SectionSliderTop />
+      <SectionSliderTop />
       <SectionTaleOf />
       <SectionSliderBottom />
-      <SectionCast />
+      {/* <SectionCast />
       <SectionComment />
       <SectionCameraWork />
       <SectionDocuments />
