@@ -3,6 +3,12 @@ import ReactDOM from "react-dom";
 import "./assets/main.scss";
 import App from "./routes";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
