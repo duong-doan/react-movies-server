@@ -2,6 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/main.scss";
 import App from "./routes";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+library.add(fas, fab, faTwitter, faFontAwesome);
 
 // Import Swiper styles
 import "swiper/css";

@@ -2,18 +2,25 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 
-export default function CustomizedButtons({ children }) {
+export default function CustomizedButtons({
+  children,
+  bgColor,
+  color,
+  borderColor,
+  width,
+}) {
   const BaseButton = styled(Button)({
-    width: "100%",
+    width: width,
     boxShadow: "none",
     textTransform: "none",
     fontSize: 16,
     fontWeight: "bold",
-    padding: "6px 12px",
+    padding: "12px 16px",
     border: "1px solid",
     lineHeight: 1.5,
-    backgroundColor: "#e50914",
-    borderColor: "#e50914",
+    backgroundColor: "transparent",
+    borderColor: "white",
+    color: "white",
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -27,8 +34,8 @@ export default function CustomizedButtons({ children }) {
       '"Segoe UI Symbol"',
     ].join(","),
     "&:hover": {
-      backgroundColor: "#e50914",
-      borderColor: "#e50914",
+      backgroundColor: "white",
+      color: "black",
       boxShadow: "none",
     },
     "&:focus": {

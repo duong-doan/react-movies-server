@@ -1,0 +1,96 @@
+.session-cast {
+  height: 100vh;
+  color: $white;
+  padding: 0 100px;
+  background-image: url('../images/slider_top/bg-tale.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .column-middle {
+    width: 1px;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $column-color;
+  }
+
+  &__wrapper {
+    height: inherit;
+    margin: auto 0;
+    position: relative;
+    border-left: 1px solid $column-color;
+    border-right: 1px solid $column-color;
+    text-align: center;
+    display: flex;
+    &__content {
+      height: 70%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .content__title {
+        font-size: 1.3rem;
+        color: $sub-title;
+        letter-spacing: 5px;
+        z-index: 2;
+      }
+
+      h1 {
+        font-size: 5rem;
+        font-weight: 400;
+        z-index: 2;
+      }
+      .content__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .content__item {
+          position: relative;
+          width: 30%;
+          z-index: 2;
+          &:hover {
+            span {
+              transform: translateX(-44%);
+            }
+          }
+
+          & > div {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            &:hover {
+              cursor: pointer;
+              img {
+                transform: scale(1.1);
+              }
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all 0.5s;
+            }
+          }
+
+          span {
+            color: $white;
+            position: absolute;
+            left: 50%;
+            bottom: -14px;
+            transform: translateX(-50%);
+            z-index: 4;
+            font-size: 1.8rem;
+            transition: all 0.5s;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 .slider-top {
   width: 100%;
-  height: 968px;
+  height: 100vh;
   position: relative;
 
   img,
@@ -16,7 +16,7 @@
 
   &__nav-custom {
     position: absolute;
-    right: 100px;
+    right: 120px;
     bottom: 50px;
     z-index: 1;
     height: 40px;
@@ -39,11 +39,200 @@
       width: 1px;
       background-color: $text-color_primary;
     }
+  }
 
-    .swiper-slide-next {
+  &__column-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    border-left: 0.5px solid $column-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 1.5rem;
+      color: $white;
     }
 
-    .swiper-slide-prev {
+    .progress {
+      position: absolute;
+      width: 2px;
+      left: -1px;
+      top: 0;
+      height: 33.33%;
+      background-color: $white;
     }
+
+    .slide-1 {
+      height: calc(100% - (100% / 3 * 2));
+      animation: progressBar1 1s;
+    }
+    .slide-2 {
+      height: calc(100% - (100% / 3 * 1));
+      animation: progressBar2 1s;
+    }
+    .slide-3 {
+      height: 100%;
+      animation: progressBar3 1s;
+    }
+
+    .slide-1.back {
+      height: calc(100% - (100% / 3 * 2));
+      animation: progressBarBack1 1s;
+    }
+    .slide-2.back {
+      height: calc(100% - (100% / 3 * 1));
+      animation: progressBarBack2 1s;
+    }
+    .slide-3.back {
+      height: 100%;
+      animation: progressBarBack3 1s;
+    }
+  }
+
+  &__column-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    border-right: 0.5px solid $column-color;
+
+    .social-list {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      li {
+        margin: 10px 0;
+        svg {
+          color: white;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  &__column-middle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    z-index: 2;
+    border-right: 1px solid $column-color;
+  }
+}
+
+.slide-title {
+  @include position-center;
+  color: $white;
+  font-size: 9rem;
+  text-align: center;
+  z-index: 4;
+}
+
+.fade-in {
+  animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progressBar1 {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: calc(100% - (100% / 3 * 2));
+  }
+}
+
+@keyframes progressBar2 {
+  0% {
+    height: calc(100% - (100% / 3 * 2));
+  }
+  100% {
+    height: calc(100% - (100% / 3 * 1));
+  }
+}
+
+@keyframes progressBar3 {
+  0% {
+    height: calc(100% - (100% / 3 * 1));
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes progressBarBack1 {
+  0% {
+    height: calc(100% - (100% / 3 * 1));
+  }
+  100% {
+    height: calc(100% - (100% / 3 * 2));
+  }
+}
+
+@keyframes progressBarBack2 {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: calc(100% - (100% / 3 * 1));
+  }
+}
+
+@keyframes progressBarBack3 {
+  0% {
+    height: calc(100% - (100% / 3 * 2));
+  }
+  100% {
+    height: 100%;
   }
 }

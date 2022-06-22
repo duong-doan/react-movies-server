@@ -16,11 +16,11 @@ const Homepage = () => {
     <div className="home-page">
       <Header />
       <SectionSliderTop />
-      {/* <SectionTaleOf />
+      <SectionTaleOf />
       <SectionSliderBottom />
       <SectionCast />
       <SectionComment />
-      <SectionCameraWork />
+      {/* <SectionCameraWork />
       <SectionDocuments />
       <SectionHistory />
       <SectionBrands /> */}
