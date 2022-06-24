@@ -1,20 +1,20 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Image1 from "assets/images/slider_top/testimonial-image-1-53x53.jpg";
-import Image2 from "assets/images/slider_top/testimonial-image-2-53x53.jpg";
-import Image3 from "assets/images/slider_top/user-2-53x53.jpg";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Image1 from 'assets/images/slider_top/testimonial-image-1-53x53.jpg';
+import Image2 from 'assets/images/slider_top/testimonial-image-2-53x53.jpg';
+import Image3 from 'assets/images/slider_top/user-2-53x53.jpg';
 
-function SectionComment() {
+function SectionComment({ children }) {
   const handleSlideChange = () => {};
 
   return (
-    <div className="section-comment">
-      <div className="column-middle"></div>
-      <div className="section-comment__wrapper">
+    <div className='section-comment'>
+      <div className='column-middle'></div>
+      <div className='section-comment__wrapper'>
         <Swiper
           slidesPerView={2}
           spaceBetween={5}
-          className="mySwiper"
+          className='mySwiper'
           loop
           onSlideChange={handleSlideChange}
           autoplay={{
@@ -31,7 +31,7 @@ function SectionComment() {
                 impedit dolor corporis.
               </p>
               <div>
-                <img src={Image2} alt="" />
+                <img src={Image2} alt='' />
                 <div>
                   <h4>ROBERT SHUMAN</h4>
                   <span>The Guardian</span>
@@ -49,7 +49,7 @@ function SectionComment() {
                 impedit dolor corporis.
               </p>
               <div>
-                <img src={Image1} alt="" />
+                <img src={Image1} alt='' />
                 <div>
                   <h4>AMANDA GILLES</h4>
                   <span>The Guardian</span>
@@ -67,7 +67,7 @@ function SectionComment() {
                 impedit dolor corporis.
               </p>
               <div>
-                <img src={Image3} alt="" />
+                <img src={Image3} alt='' />
                 <div>
                   <h4>DONNA LOUIS</h4>
                   <span>The Guardian</span>
@@ -76,6 +76,7 @@ function SectionComment() {
             </div>
           </SwiperSlide>
         </Swiper>
+        {children}
       </div>
     </div>
   );

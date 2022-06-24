@@ -15,12 +15,6 @@ import "swiper/css/pagination";
 
 library.add(fas, fab, faTwitter, faFontAwesome);
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
