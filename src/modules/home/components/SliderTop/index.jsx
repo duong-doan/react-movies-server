@@ -80,7 +80,7 @@ const SliderTop = () => {
       {sliderImages.map((image) => {
         const slideActive = image.id === index;
         return (
-          <SwiperSlide>
+          <SwiperSlide key={image.id}>
             <span className={`slide-title ${!!slideActive ? "fade-in" : ""}`}>
               {image.title}
             </span>

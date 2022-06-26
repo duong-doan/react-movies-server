@@ -1,22 +1,23 @@
 // abstracts
-@import './abstracts/variables';
-@import './abstracts/mixins';
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
 
 // base
-@import './base/reset';
+@import "./base/reset";
 
 // pages
-@import './pages/login';
-@import './pages/header';
-@import './pages/home-page';
-@import './pages/slider-top';
-@import './pages/section-tale';
-@import './pages/slider-bottom';
-@import './pages/session-cast';
-@import './pages/section-comment';
-@import './pages/section-brand';
-@import './pages/footer';
+@import "./pages/login";
+@import "./pages/header";
+@import "./pages/home-page";
+@import "./pages/slider-top";
+@import "./pages/section-tale";
+@import "./pages/slider-bottom";
+@import "./pages/session-cast";
+@import "./pages/section-comment";
+@import "./pages/section-brand";
+@import "./pages/footer";
 
 // components
-@import './components/text-line-through';
-@import './components/_column-common';
+@import "./components/text-line-through";
+@import "./components/_column-common";
+@import "./components/movie-card";

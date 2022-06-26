@@ -1,5 +1,6 @@
 import TextLineThrough from "components/TextLineThrough/index";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -22,7 +23,9 @@ function Header() {
             <TextLineThrough color="white">BLOG</TextLineThrough>
           </li>
           <li>
-            <TextLineThrough color="white">MOVIES</TextLineThrough>
+            <Link to="/movies">
+              <TextLineThrough color="white">MOVIES</TextLineThrough>
+            </Link>
           </li>
         </ul>
       </div>
