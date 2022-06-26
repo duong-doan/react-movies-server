@@ -1,0 +1,38 @@
+.footer {
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+  background: $black;
+  color: $white;
+
+  &__logo {
+    h2 {
+      font-size: 3rem;
+      text-decoration: line-through;
+      text-decoration-color: $white;
+    }
+  }
+  &__menu {
+    ul {
+      display: flex;
+      align-items: center;
+      li {
+        font-size: 1.6rem;
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+.footer__present {
+  border-top: 1px solid $column-color;
+  color: $white;
+  text-align: center;
+  background: $black;
+  padding: 10px 0;
+  span {
+    font-size: 1rem;
+  }
+}

@@ -1,5 +1,8 @@
+@import './section-camera';
+@import './section-documents';
+
 .section-comment {
-  height: 150vh;
+  height: 180vh;
   padding: 0 100px;
   background-image: url('../images/slider_top/h1-background-2-scaled.jpg');
   background-position: center;
@@ -69,56 +72,6 @@
                 color: $sub-title;
               }
             }
-          }
-        }
-      }
-    }
-
-    .section-camera {
-      margin: 150px 0;
-
-      &__body {
-        display: flex;
-        align-items: center;
-
-        &__left {
-          width: 50%;
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          flex-direction: column;
-          height: 350px;
-          padding: 30px;
-
-          span {
-            color: $sub-title;
-            font-size: 1.3rem;
-            letter-spacing: 5px;
-          }
-
-          h1 {
-            font-size: 4rem;
-            width: 100%;
-            margin: 2.5rem 0;
-            color: $white;
-            text-align: right;
-            margin: 0;
-            b {
-              text-decoration: line-through;
-              text-decoration-color: $white !important;
-              font-size: inherit;
-            }
-          }
-        }
-        &__right {
-          width: 50%;
-          display: flex;
-          padding: 0 30px;
-          img {
-            margin: auto;
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
           }
         }
       }

@@ -7,9 +7,9 @@ import SectionCast from '../components/SectionCast';
 import SectionComment from '../components/SectionComment';
 import SectionCameraWork from '../components/SectionCameraWork';
 import SectionDocuments from '../components/SectionDocuments';
-import SectionHistory from '../components/SectionHistory';
 import SectionBrands from '../components/SectionBrands';
 import Header from './Header';
+import Footer from './Footer';
 
 const Homepage = () => {
   return (
@@ -21,10 +21,10 @@ const Homepage = () => {
       <SectionCast />
       <SectionComment>
         <SectionCameraWork />
+        <SectionDocuments />
       </SectionComment>
-      {/* <SectionDocuments />
-      <SectionHistory />
-      <SectionBrands /> */}
+      <SectionBrands />
+      <Footer />
     </div>
   );
 };
