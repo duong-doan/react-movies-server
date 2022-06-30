@@ -1,0 +1,10 @@
+.MuiFormControl-root {
+  label {
+    color: white;
+  }
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: $white;
+    }
+  }
+}
