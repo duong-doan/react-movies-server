@@ -1,12 +1,13 @@
-import React from "react";
-import cs from "classnames";
+import React from 'react';
+import cs from 'classnames';
 
-const TextLineThrough = ({ children, color }) => {
+const TextLineThrough = ({ children, color, custom = {} }) => {
   return (
     <div
-      className={cs("text-line-through", {
+      className={cs('text-line-through', {
         [color]: color,
       })}
+      style={{ ...custom }}
     >
       {children}
     </div>

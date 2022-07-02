@@ -1,12 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import { TextField } from "@mui/material";
+import { TextField, Box } from '@mui/material';
 
-const FormGroup = ({ id, label, type }) => {
+const FormGroup = ({ id, label, type, onChange }) => {
   return (
-    <div className="form-group">
-      <TextField id={id} label={label} type={type} />
-    </div>
+    <Box component='div' sx={{ width: '100%', margin: '10px 0' }}>
+      <TextField
+        style={{ width: '100%' }}
+        id={id}
+        label={label}
+        type={type}
+        onChange={onChange}
+      />
+    </Box>
   );
 };
 

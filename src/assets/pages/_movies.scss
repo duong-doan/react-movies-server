@@ -3,6 +3,16 @@
     color: white;
   }
   .MuiOutlinedInput-root {
+    &:hover {
+      .MuiOutlinedInput-notchedOutline {
+        border-color: white;
+      }
+    }    
+
+    input {
+      color: white;
+    }
+
     fieldset {
       border-color: $white;
     }
