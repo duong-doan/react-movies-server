@@ -11,9 +11,9 @@ const SectionTaleOf = () => {
         <div className="column-middle"></div>
         <div className="section-tale__body__left">
           <div className="wrapper__img">
-            <img className="img-1" src={Image1} alt="image" />
-            <img className="img-2" src={Image2} alt="image" />
-            <img className="img-3" src={Image3} alt="image" />
+            <img className="img-1" src={Image1} alt="img" />
+            <img className="img-2" src={Image2} alt="img" />
+            <img className="img-3" src={Image3} alt="img" />
           </div>
         </div>
         <div className="section-tale__body__right">

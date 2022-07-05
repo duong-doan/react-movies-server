@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from '../components/MovieCard';
+import MovieCard from './MovieCard';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';

@@ -24,16 +24,16 @@ const SectionSliderBottom = () => {
         }}
       >
         <SwiperSlide>
-          <img src={Image1} alt="image" />
+          <img src={Image1} alt="img" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Image2} alt="image" />
+          <img src={Image2} alt="img" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Image3} alt="image" />
+          <img src={Image3} alt="img" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={Image4} alt="image" />
+          <img src={Image4} alt="img" />
         </SwiperSlide>
       </Swiper>
     </div>

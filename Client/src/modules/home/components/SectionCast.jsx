@@ -13,19 +13,19 @@ function SectionCast() {
           <div className='content__list'>
             <div className='content__item'>
               <div>
-                <img src={Image1} alt='image' />
+                <img src={Image1} alt='img' />
               </div>
               <span>Alex Pearson </span>
             </div>
             <div className='content__item'>
               <div>
-                <img src={Image2} alt='image' />
+                <img src={Image2} alt='img' />
               </div>
               <span>Lana Ray Vaugh </span>
             </div>
             <div className='content__item'>
               <div>
-                <img src={Image3} alt='image' />
+                <img src={Image3} alt='img' />
               </div>
               <span>Eva Rose </span>
             </div>

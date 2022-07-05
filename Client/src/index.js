@@ -7,7 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 import { ThemeProvider } from '@mui/material/styles';
-import customTheme from 'theme/index';
+import customTheme from './theme/index';
 
 // Import Swiper styles
 import 'swiper/css';
