@@ -1,18 +1,19 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   EffectFade,
   Navigation,
   Pagination,
   Autoplay,
-} from "swiper";
-import { useRef, useState } from "react";
-import cls from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from 'swiper';
+import { useRef, useState } from 'react';
+import cls from 'classnames';
+import { Link } from 'react-router-dom';
 
-import TextLineThrough from "components/TextLineThrough/index";
-import image1 from "assets/images/slider_top/Skull - 63533.mp4";
-import image2 from "assets/images/slider_top/h1-slide-3-1.jpg";
-import image3 from "assets/images/slider_top/h1-slide-2-1.jpg";
+import TextLineThrough from 'components/TextLineThrough/index';
+import image1 from 'assets/images/slider_top/Skull - 63533.mp4';
+import image2 from 'assets/images/slider_top/h1-slide-3-1.jpg';
+import image3 from 'assets/images/slider_top/h1-slide-2-1.jpg';
+import { AUTH_ROUTES } from 'modules/auth/store/constant';
 
 SwiperCore.use([Autoplay]);
 
@@ -24,22 +25,22 @@ const SliderTop = () => {
   const sliderImages = [
     {
       id: 1,
-      title: "Every Things Is Secret",
+      title: 'Every Things Is Secret',
       img: (
-        <video autoPlay="autoPlay" loop muted>
-          <source src={image1} type="video/mp4" />
+        <video autoPlay='autoPlay' loop muted>
+          <source src={image1} type='video/mp4' />
         </video>
       ),
     },
     {
       id: 2,
-      title: "Memories Lost Love Found",
-      img: <img src={image2} alt="image2" />,
+      title: 'Memories Lost Love Found',
+      img: <img src={image2} alt='image2' />,
     },
     {
       id: 3,
-      title: "Fireplace And Other Tales",
-      img: <img src={image3} alt="image3" />,
+      title: 'Fireplace And Other Tales',
+      img: <img src={image3} alt='image3' />,
     },
   ];
 
@@ -65,12 +66,12 @@ const SliderTop = () => {
     <Swiper
       ref={swiperRef}
       spaceBetween={16}
-      effect="fade"
+      effect='fade'
       fadeEffect={{
         crossFade: false,
       }}
       modules={[EffectFade, Navigation, Pagination]}
-      className="mySwiper"
+      className='mySwiper'
       loop
       onSlideChange={handleSlideChange}
       autoplay={{
@@ -81,36 +82,34 @@ const SliderTop = () => {
         const slideActive = image.id === index;
         return (
           <SwiperSlide key={image.id}>
-            <span className={`slide-title ${!!slideActive ? "fade-in" : ""}`}>
+            <span className={`slide-title ${!!slideActive ? 'fade-in' : ''}`}>
               {image.title}
             </span>
             {image.img}
           </SwiperSlide>
         );
       })}
-      <div className="slider-top__nav-custom">
-        <button className="swiper-slide-prev" onClick={handleClickPrev}>
-          <TextLineThrough color="white">Prev</TextLineThrough>
+      <div className='slider-top__nav-custom'>
+        <button className='swiper-slide-prev' onClick={handleClickPrev}>
+          <TextLineThrough color='white'>Prev</TextLineThrough>
         </button>
         <span></span>
-        <button className="swiper-slide-next" onClick={handleClickNext}>
-          <TextLineThrough color="white">Next</TextLineThrough>
+        <button className='swiper-slide-next' onClick={handleClickNext}>
+          <TextLineThrough color='white'>Next</TextLineThrough>
         </button>
       </div>
-      <div className="slider-top__column-left">
-        <ul className="social-list">
-          <li>
-            <FontAwesomeIcon icon="fa-brands fa-instagram-square" />
-          </li>
-          <li>
-            <FontAwesomeIcon icon="fa-brands fa-facebook-f" />
-          </li>
-          <li>
-            <FontAwesomeIcon icon="fa-brands fa-twitter" />
-          </li>
-        </ul>
+      <div className='slider-top__column-left'>
+        <Link to={AUTH_ROUTES.LOGIN}>
+          <ul className='social-list'>
+            <li>L</li>
+            <li>O</li>
+            <li>G</li>
+            <li>I</li>
+            <li>N</li>
+          </ul>
+        </Link>
       </div>
-      <div className="slider-top__column-right">
+      <div className='slider-top__column-right'>
         <div
           className={cls(`progress slide-${index}`, {
             back: slideBack,

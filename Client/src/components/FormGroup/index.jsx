@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TextField, Box } from '@mui/material';
 
-const FormGroup = ({ id, label, type, onChange }) => {
+const FormGroup = ({ id, label, type, onChange, name }) => {
   return (
     <Box component='div' sx={{ width: '100%', margin: '10px 0' }}>
       <TextField
@@ -10,6 +10,7 @@ const FormGroup = ({ id, label, type, onChange }) => {
         id={id}
         label={label}
         type={type}
+        name={name}
         onChange={onChange}
       />
     </Box>

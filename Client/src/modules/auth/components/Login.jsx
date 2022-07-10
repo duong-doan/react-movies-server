@@ -1,12 +1,15 @@
 import React from 'react';
-import FormGroup from 'components/FormGroup';
-import BaseButton from 'components/BaseButton';
 import { Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import FormGroup from 'components/FormGroup';
+
+import BaseButton from 'components/BaseButton';
 import { AUTH_ROUTES } from '../store/constant';
-import TextLineThrough from "components/TextLineThrough"
+import TextLineThrough from 'components/TextLineThrough';
+import useLogin from '../services/useLogin';
 
 const Login = () => {
+  const { handleSubmit, handleChange } = useLogin();
   const handleClick = () => {
     console.log('click');
   };
@@ -17,7 +20,7 @@ const Login = () => {
         <h2>DOAN MOVIE</h2>
       </div>
       <div className='login__body'>
-        <div className='form-signin'>
+        <form className='form-signin' onSubmit={handleSubmit}>
           <Typography
             variant='h3'
             fontWeight='bold'
@@ -30,8 +33,20 @@ const Login = () => {
           >
             SIGN IN
           </Typography>
-          <FormGroup id='email' label='Email' type='text' />
-          <FormGroup id='password' label='Password' type='password' />
+          <FormGroup
+            id='email'
+            name='email'
+            label='Email'
+            type='text'
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
+          <FormGroup
+            id='password'
+            name='password'
+            label='Password'
+            type='password'
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
 
           <BaseButton
             width='50%'
@@ -41,8 +56,11 @@ const Login = () => {
             custom={{
               marginTop: '20px',
             }}
-          >SIGN IN</BaseButton>
-        </div>
+            type='submit'
+          >
+            SIGN IN
+          </BaseButton>
+        </form>
         <Typography variant='h6' color='primary'>
           Register account here.{' '}
           <NavLink to={AUTH_ROUTES.REGISTER}>

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-const BaseButton = ({ width, height, onClick, color, children, custom }) => {
+const BaseButton = ({
+  width,
+  height,
+  onClick,
+  color,
+  children,
+  custom,
+  type = 'button',
+}) => {
   return (
     <Button
       variant='outlined'
@@ -10,10 +18,11 @@ const BaseButton = ({ width, height, onClick, color, children, custom }) => {
         width: width,
         height: height,
         textTransform: 'uppercase',
-        fontWeight: "bold",
+        fontWeight: 'bold',
         ...custom,
       }}
       onClick={onClick}
+      type={type}
     >
       {children}
     </Button>
