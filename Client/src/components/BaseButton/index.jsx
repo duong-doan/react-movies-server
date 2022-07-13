@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 
 const BaseButton = ({
   width,
@@ -9,6 +10,7 @@ const BaseButton = ({
   children,
   custom,
   type = 'button',
+  loading,
 }) => {
   return (
     <Button
@@ -19,11 +21,16 @@ const BaseButton = ({
         height: height,
         textTransform: 'uppercase',
         fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
         ...custom,
       }}
       onClick={onClick}
       type={type}
     >
+      {loading && (
+        <CircularProgress size={20} style={{ marginRight: '10px' }} />
+      )}
       {children}
     </Button>
   );

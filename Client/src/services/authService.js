@@ -1,17 +1,11 @@
-import axios from 'axios';
+import axios from 'api/axiosClient';
 import { setToken } from 'utils/hooks/useToken';
 
 export const loginUserRequest = async (payload) => {
   try {
-    console.log('axios', axios);
-    console.log(`${process.env.REACT_APP_BASE_URL}/login`);
-    const res = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/login`,
-      payload
-    );
+    const res = await axios.post('/login', payload);
     if (res) {
       const accessToken = res.data.accessToken;
-      console.log('accessToken login request', accessToken);
       setToken(accessToken);
     }
   } catch (error) {
@@ -21,9 +15,7 @@ export const loginUserRequest = async (payload) => {
 
 export const registerUserRequest = async (payload) => {
   try {
-    const res = await axios.post('/register', payload);
-    console.log(res);
-    console.log('Register success!!');
+    await axios.post('/register', payload);
   } catch (error) {
     console.log('register error', error);
   }

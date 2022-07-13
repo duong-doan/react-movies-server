@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TextField, Box } from '@mui/material';
 
-const FormGroup = ({ id, label, type, onChange, name }) => {
+const FormGroup = ({ id, label, type, onChange, name, error = '' }) => {
   return (
     <Box component='div' sx={{ width: '100%', margin: '10px 0' }}>
       <TextField
@@ -13,6 +13,11 @@ const FormGroup = ({ id, label, type, onChange, name }) => {
         name={name}
         onChange={onChange}
       />
+      {error && (
+        <p style={{ fontSize: '1rem', marginTop: '10px', color: '#e17272' }}>
+          {error}
+        </p>
+      )}
     </Box>
   );
 };

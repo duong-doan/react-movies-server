@@ -5,11 +5,12 @@ import BaseButton from 'components/BaseButton';
 import { NavLink } from 'react-router-dom';
 import { AUTH_ROUTES } from '../store/constant';
 import TextLineThrough from 'components/TextLineThrough';
+import useRegister from '../services/useRegister';
 
 const Register = () => {
-  const handleClick = () => {
-    console.log('click');
-  };
+  const { handleChange, handleSubmit } = useRegister();
+
+  const handleClick = () => {};
 
   return (
     <div className='login'>
@@ -17,7 +18,7 @@ const Register = () => {
         <h2>DOAN MOVIE</h2>
       </div>
       <div className='login__body' style={{ height: '60%' }}>
-        <div className='form-signin'>
+        <form onSubmit={handleSubmit} className='form-signin'>
           <Typography
             variant='h3'
             fontWeight='bold'
@@ -30,12 +31,26 @@ const Register = () => {
           >
             REGISTER
           </Typography>
-          <FormGroup id='email' label='Email' type='text' />
-          <FormGroup id='password' label='Password' type='password' />
           <FormGroup
-            id='confirm-password'
+            id='email'
+            name='email'
+            label='Email'
+            type='text'
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
+          <FormGroup
+            id='password'
+            name='password'
+            label='Password'
+            type='password'
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
+          />
+          <FormGroup
+            id='confirmPassword'
+            name='confirmPassword'
             label='Confirm password'
             type='password'
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
 
           <BaseButton
@@ -46,8 +61,11 @@ const Register = () => {
             custom={{
               marginTop: '20px',
             }}
-          >SIGN IN</BaseButton>
-        </div>
+            type='submit'
+          >
+            SIGN IN
+          </BaseButton>
+        </form>
         <Typography variant='h6' color='primary'>
           Back to login.
           <NavLink to={AUTH_ROUTES.LOGIN}>

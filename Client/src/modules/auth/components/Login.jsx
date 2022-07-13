@@ -10,9 +10,7 @@ import useLogin from '../services/useLogin';
 
 const Login = () => {
   const { handleSubmit, handleChange } = useLogin();
-  const handleClick = () => {
-    console.log('click');
-  };
+  const handleClick = () => {};
 
   return (
     <div className='login'>
@@ -39,6 +37,7 @@ const Login = () => {
             label='Email'
             type='text'
             onChange={(e) => handleChange(e.target.name, e.target.value)}
+            error=''
           />
           <FormGroup
             id='password'
