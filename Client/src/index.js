@@ -8,6 +8,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 import { ThemeProvider } from '@mui/material/styles';
 import customTheme from './theme/index';
+import { store } from './store/index';
+import { Provider } from 'react-redux';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -19,9 +21,11 @@ library.add(fas, fab, faTwitter, faFontAwesome);
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={customTheme}>
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={customTheme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -8,7 +8,7 @@ import TextLineThrough from 'components/TextLineThrough';
 import useRegister from '../services/useRegister';
 
 const Register = () => {
-  const { handleChange, handleSubmit } = useRegister();
+  const { loading, handleChange, handleSubmit } = useRegister();
 
   const handleClick = () => {};
 
@@ -62,6 +62,7 @@ const Register = () => {
               marginTop: '20px',
             }}
             type='submit'
+            loading={loading}
           >
             SIGN IN
           </BaseButton>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from 'utils/hooks/useToken';
+// import { getToken } from 'utils/hooks/useToken';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 axios.defaults.headers.common.Accept = 'application/json';

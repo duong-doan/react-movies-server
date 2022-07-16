@@ -9,7 +9,7 @@ import TextLineThrough from 'components/TextLineThrough';
 import useLogin from '../services/useLogin';
 
 const Login = () => {
-  const { handleSubmit, handleChange } = useLogin();
+  const { loading, handleSubmit, handleChange } = useLogin();
   const handleClick = () => {};
 
   return (
@@ -56,6 +56,7 @@ const Login = () => {
               marginTop: '20px',
             }}
             type='submit'
+            loading={loading}
           >
             SIGN IN
           </BaseButton>

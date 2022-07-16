@@ -1,9 +1,9 @@
-import React from "react";
-import Body from "./containers/Body";
+import React from 'react';
+import Body from './containers/Body';
 
 const homeRoutes = [
   {
-    path: "/",
+    path: '/home',
     auth: true,
     exact: true,
     component: <Body />,

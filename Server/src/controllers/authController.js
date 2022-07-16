@@ -3,6 +3,7 @@ const { createAccessToken } = require('../utils/helpers');
 
 const authController = {
   register: async (req, res) => {
+    console.log('req.body', req.body);
     try {
       const { email, password } = req.body;
       const user = await Users.findOne({ email });
@@ -29,7 +30,7 @@ const authController = {
         res.status(400).json({ message: 'this email not exist' });
       }
       const accessToken = createAccessToken({ email: user.email });
-      res.json({ accessToken });
+      res.json({ email, accessToken });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
