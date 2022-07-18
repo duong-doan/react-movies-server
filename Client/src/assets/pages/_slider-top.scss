@@ -122,6 +122,10 @@
         color: $white;
         font-size: 1.4rem;
       }
+
+      li.active {
+        margin: 0;
+      }
     }
   }
 

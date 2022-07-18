@@ -17,7 +17,7 @@ const Register = () => {
       <div className='login__logo'>
         <h2>DOAN MOVIE</h2>
       </div>
-      <div className='login__body' style={{ height: '60%' }}>
+      <div className='login__body' style={{ height: '50%' }}>
         <form onSubmit={handleSubmit} className='form-signin'>
           <Typography
             variant='h3'

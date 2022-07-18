@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import isEmpty from 'lodash/isEmpty';
 import SwiperCore, {
   EffectFade,
   Navigation,
@@ -14,6 +15,8 @@ import image1 from 'assets/images/slider_top/Skull - 63533.mp4';
 import image2 from 'assets/images/slider_top/h1-slide-3-1.jpg';
 import image3 from 'assets/images/slider_top/h1-slide-2-1.jpg';
 import { AUTH_ROUTES } from 'modules/auth/store/constant';
+import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from 'modules/auth/store/selector';
 
 SwiperCore.use([Autoplay]);
 
@@ -21,6 +24,7 @@ function SectionSliderTop() {
   const swiperRef = useRef(null);
   const [index, setIndex] = useState(1);
   const [slideBack, setSlideBack] = useState(false);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const sliderImages = [
     {
@@ -100,15 +104,29 @@ function SectionSliderTop() {
           </button>
         </div>
         <div className='slider-top__column-left'>
-          <Link to={AUTH_ROUTES.LOGIN}>
-            <ul className='social-list'>
-              <li>L</li>
-              <li>O</li>
-              <li>G</li>
-              <li>I</li>
-              <li>N</li>
-            </ul>
-          </Link>
+          {isAuthenticated ? (
+            // eslint-disable-next-line jsx-a11y/anchor-is-valid
+            <a href='#'>
+              <ul className='social-list'>
+                <li>W</li>
+                <li>E</li>
+                <li>L</li>
+                <li>C</li>
+                <li>O</li>
+                <li>M</li>
+              </ul>
+            </a>
+          ) : (
+            <Link to={AUTH_ROUTES.LOGIN}>
+              <ul className='social-list'>
+                <li>L</li>
+                <li>O</li>
+                <li>G</li>
+                <li>I</li>
+                <li>N</li>
+              </ul>
+            </Link>
+          )}
         </div>
         <div className='slider-top__column-right'>
           <div

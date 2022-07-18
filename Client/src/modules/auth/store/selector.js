@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+import isEmpty from 'lodash/isEmpty';
 
 const selectUserSelf = (state) => state.auth.user;
 const selectUserLoadingSelf = (state) => state.auth.loading;
@@ -13,3 +14,6 @@ export const selectUserLoading = createSelector(
   selectUserLoadingSelf,
   (state) => state
 );
+export const selectIsAuthenticated = createSelector(selectUserSelf, (user) => {
+  return !isEmpty(user);
+});
