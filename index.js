@@ -2,9 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const forceSsl = require('force-ssl-heroku');
-const db = require('./app/src/config/db');
-const authRouter = require('./app/src/routes/authRouter');
-const movieRouter = require('./app/src/routes/moviesRouter');
+const db = require('./src/config/db');
+const authRouter = require('./src/routes/authRouter');
+const movieRouter = require('./src/routes/moviesRouter');
 
 const app = express();
 app.use(forceSsl);
@@ -17,6 +17,6 @@ db.connect();
 app.use('/api', authRouter);
 app.use('/api', movieRouter);
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
   console.log(`dang chay tren port 5000 a`);
 });
