@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const forceSsl = require('force-ssl-heroku');
 const db = require('./src/config/db');
 const authRouter = require('./src/routes/authRouter');
 const movieRouter = require('./src/routes/moviesRouter');
 
 const app = express();
+app.use(forceSsl);
 app.use(express.json());
 app.use(cors());
 

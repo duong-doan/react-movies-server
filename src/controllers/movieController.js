@@ -6,6 +6,7 @@ const moviesController = {
       const moviesList = await Movies.find();
       console.log('moviesList', moviesList);
       res.json(moviesList);
+      return moviesList;
     } catch (error) {
       console.log(error);
     }
