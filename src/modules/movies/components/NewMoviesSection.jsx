@@ -1,41 +1,38 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import MovieCard from './MovieCard';
-import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
-import Grid from '@mui/material/Grid';
 
 const NewMoviesSection = ({ data }) => {
-  console.log(data);
   return (
-    <>
-      <Grid container padding='0 50px' style={{ marginBottom: '16px' }}>
+    <Fragment>
+      {/* <Grid container padding='0 50px' style={{ marginBottom: '16px' }}>
         <Typography variant='h4' color='white'>
           NEW MOVIES
         </Typography>
-      </Grid>
+      </Grid> */}
 
-      <Grid container padding='0 50px'>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          padding: '0 50px',
+        }}
+      >
         {data.map((item) => (
-          <Grid
-            key={item}
-            item
-            md={2}
-            sm={2}
+          <div
             style={{
               display: 'flex',
-              alignItems: 'center',
               justifyContent: 'center',
-              flexWrap: 'no-wrap',
-              margin: 'auto',
+              alignItems: 'center',
+              width: '20%',
+              margin: '0 10px',
             }}
           >
-            <Link to='#'>
-              <MovieCard {...item} decorCard />
-            </Link>
-          </Grid>
+            <MovieCard {...item} decorCard />
+          </div>
         ))}
-      </Grid>
-    </>
+      </div>
+    </Fragment>
   );
 };
 

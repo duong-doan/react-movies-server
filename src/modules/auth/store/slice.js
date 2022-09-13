@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import * as actions from './actions';
-import { KEY_ACCESS_TOKEN_STR } from './constant';
+import { KEY_ACCESS_TOKEN_STR, KEY_USER_LOGIN } from './constant';
 
 const initialState = {
-  user: {},
-  token: '',
+  user: JSON.parse(localStorage.getItem(KEY_USER_LOGIN)) || {},
+  token: JSON.parse(localStorage.getItem(KEY_ACCESS_TOKEN_STR)) || '',
   loading: false,
 };
 
@@ -14,15 +14,15 @@ export const authSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     authLoginRequestSuccess: (state, action) => {
-      console.log('action.payload', action.payload);
       const { email, accessToken } = action.payload;
       localStorage.setItem(KEY_ACCESS_TOKEN_STR, JSON.stringify(accessToken));
-      state.token = accessToken || '';
+      localStorage.setItem(KEY_USER_LOGIN, JSON.stringify({ email }));
+      state.token = accessToken;
       state.user = { email };
       state.loading = false;
     },
     authRegisterRequestSuccess: (state) => {
-      state.loading = true;
+      state.loading = false;
     },
   },
   extraReducers: {
@@ -32,12 +32,14 @@ export const authSlice = createSlice({
     [actions.authLoginError.type]: (state) => {
       state.loading = false;
     },
-    [actions.authLoginRequest.type]: (state) => {
+    [actions.authRegisterError.type]: (state, action) => {
+      state.loading = false;
+    },
+    [actions.authRegisterRequest.type]: (state, action) => {
       state.loading = true;
     },
-    [actions.authRegisterError.type]: (state, action) => {
-      console.log('extra', action);
-      state.loading = false;
+    [actions.logoutRequest.type]: (state) => {
+      state.token = '';
     },
   },
 });

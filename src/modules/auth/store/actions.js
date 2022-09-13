@@ -6,3 +6,5 @@ export const authLoginError = createAction(types.SIGNIN_FAILED);
 
 export const authRegisterRequest = createAction(types.AUTH_REGISTER_REQUEST);
 export const authRegisterError = createAction(types.SIGNUP_FAILED);
+
+export const logoutRequest = createAction(types.LOGOUT_REQUEST);

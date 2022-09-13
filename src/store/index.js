@@ -4,6 +4,7 @@ import authReducer from 'modules/auth/store/slice';
 import movieReducer from 'modules/movies/store/slice';
 import rootSaga from './saga';
 import { throwMiddleware } from './middleware';
+import history from 'utils/history';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,4 +21,4 @@ export const store = configureStore({
     ),
 });
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga, history);

@@ -6,10 +6,10 @@ const showError = (action) => {
   let errorMsg = '';
   switch (action.type) {
     case SIGNUP_FAILED:
-      errorMsg = SIGNUP_FAILED;
+      errorMsg = action.payload;
       break;
     case SIGNIN_FAILED:
-      errorMsg = SIGNIN_FAILED;
+      errorMsg = action.payload;
       break;
     default:
       break;

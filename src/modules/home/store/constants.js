@@ -12,6 +12,8 @@ export const HOME_ROUTES = {
   HOME: '/',
 };
 
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+
 export const DATA_SECTION_COMMENTS = [
   {
     id: 1,

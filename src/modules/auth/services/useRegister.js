@@ -1,31 +1,41 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from 'modules/auth/store/actions';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import { selectUserLoading } from '../store/selector';
 
 const useRegister = () => {
   const dispatch = useDispatch();
-  const [payload, setPayload] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
+  const loading = useSelector(selectUserLoading);
+
+  const registerSchema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().min(8).required(),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required(),
   });
 
-  const handleChange = (name, value) => {
-    setPayload((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    validationSchema: registerSchema,
+    onSubmit: (values) => {
+      handleSubmit(values);
+    },
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(payload);
-    dispatch(actions.authRegisterRequest(payload));
+  const handleSubmit = (values) => {
+    const { email, password } = values;
+    dispatch(actions.authRegisterRequest({ email, password }));
   };
 
   return {
-    handleChange,
-    handleSubmit,
+    loading,
+    formik,
   };
 };
 

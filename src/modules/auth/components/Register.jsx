@@ -8,9 +8,7 @@ import TextLineThrough from 'components/TextLineThrough';
 import useRegister from '../services/useRegister';
 
 const Register = () => {
-  const { loading, handleChange, handleSubmit } = useRegister();
-
-  const handleClick = () => {};
+  const { loading, formik } = useRegister();
 
   return (
     <div className='login'>
@@ -18,7 +16,7 @@ const Register = () => {
         <h2>DOAN MOVIE</h2>
       </div>
       <div className='login__body' style={{ height: '50%' }}>
-        <form onSubmit={handleSubmit} className='form-signin'>
+        <form onSubmit={formik.handleSubmit} className='form-signin'>
           <Typography
             variant='h3'
             fontWeight='bold'
@@ -36,35 +34,49 @@ const Register = () => {
             name='email'
             label='Email'
             type='text'
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={formik.handleChange}
+            error={
+              formik.errors.email && formik.touched.email
+                ? formik.errors.email
+                : ''
+            }
           />
           <FormGroup
             id='password'
             name='password'
             label='Password'
             type='password'
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={formik.handleChange}
+            error={
+              formik.errors.password && formik.touched.password
+                ? formik.errors.password
+                : ''
+            }
           />
           <FormGroup
             id='confirmPassword'
             name='confirmPassword'
             label='Confirm password'
             type='password'
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={formik.handleChange}
+            error={
+              formik.errors.confirmPassword && formik.touched.confirmPassword
+                ? formik.errors.confirmPassword
+                : ''
+            }
           />
 
           <BaseButton
             width='50%'
             height='50px'
             color='primary'
-            onClick={handleClick}
             custom={{
               marginTop: '20px',
             }}
             type='submit'
             loading={loading}
           >
-            SIGN IN
+            SIGN UP
           </BaseButton>
         </form>
         <Typography variant='h6' color='primary'>

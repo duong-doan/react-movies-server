@@ -1,16 +1,18 @@
 import TextLineThrough from 'components/TextLineThrough/index';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { selectIsAuthenticated, selectUser } from 'modules/auth/store/selector';
-import { useSelector } from 'react-redux';
-import { AUTH_ROUTES } from 'modules/auth/store/constant';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutRequest } from 'modules/auth/store/actions';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickExpand = () => {
     setOpen((prevState) => !prevState);
@@ -18,6 +20,10 @@ function Header() {
 
   const handleClickClose = () => {
     setOpen(false);
+  };
+
+  const handleClickLogout = () => {
+    dispatch(logoutRequest({ navigate }));
   };
 
   return (
@@ -28,9 +34,11 @@ function Header() {
       <div className='header__menu'>
         <ul>
           <li>
-            <TextLineThrough color='white'>HOME</TextLineThrough>
+            <Link to='/' style={{ color: 'white' }}>
+              <TextLineThrough color='white'>HOME</TextLineThrough>
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <TextLineThrough color='white'>PAGES</TextLineThrough>
           </li>
           <li>
@@ -38,9 +46,9 @@ function Header() {
           </li>
           <li>
             <TextLineThrough color='white'>BLOG</TextLineThrough>
-          </li>
+          </li> */}
           <li>
-            <Link to='/movies'>
+            <Link to='/movies' style={{ color: 'white' }}>
               <TextLineThrough color='white'>MOVIES</TextLineThrough>
             </Link>
           </li>
@@ -56,9 +64,9 @@ function Header() {
         {isAuthenticated ? (
           <div className='user-profile'>
             <h4>{user.email}</h4>
-            <Link to={AUTH_ROUTES.LOGIN} style={{ color: '#4545d5' }}>
-              <h6>Logout</h6>
-            </Link>
+            <h6 onClick={handleClickLogout} style={{ cursor: 'pointer' }}>
+              Logout
+            </h6>
           </div>
         ) : (
           <div className='introduce'>

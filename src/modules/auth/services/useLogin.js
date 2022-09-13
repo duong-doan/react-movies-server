@@ -24,8 +24,8 @@ const useLogin = () => {
   }, [token, navigate]);
 
   const loginSchema = Yup.object().shape({
-    email: Yup.string().email(),
-    password: Yup.string().min(8),
+    email: Yup.string().email().required(),
+    password: Yup.string().min(8).required(),
   });
 
   const formik = useFormik({
@@ -40,8 +40,8 @@ const useLogin = () => {
   });
 
   const handleSubmit = (values) => {
-    const { email } = values;
-    dispatch(actions.authLoginRequest({ email }));
+    const { email, password } = values;
+    dispatch(actions.authLoginRequest({ email, password }));
   };
 
   return {

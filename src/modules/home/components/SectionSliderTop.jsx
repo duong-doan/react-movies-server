@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import isEmpty from 'lodash/isEmpty';
 import SwiperCore, {
   EffectFade,
   Navigation,
