@@ -1,4 +1,4 @@
-import { UNAUTHORIZED } from 'utils/httpStatus';
+import { FORBIDDEN, UNAUTHORIZED } from 'utils/httpStatus';
 import { toast } from 'react-toastify';
 import { SIGNIN_FAILED, SIGNUP_FAILED } from 'modules/auth/store/constant';
 
@@ -19,15 +19,17 @@ const showError = (action) => {
   }
 };
 
-const handleError = (action) => {
+const HandleError = (action) => {
   const { payload } = action;
   if (payload) {
-    const { status } = payload;
+    const { status, message } = payload;
     switch (status) {
       case UNAUTHORIZED:
         toast.error('Unauthenticated');
         break;
-
+      case FORBIDDEN:
+        toast.error(message);
+        break;
       default:
         showError(action);
         break;
@@ -37,7 +39,7 @@ const handleError = (action) => {
 
 export const throwMiddleware = () => (next) => (action) => {
   if (action.type.indexOf('_FAILED') > 0) {
-    handleError(action);
+    HandleError(action);
   }
   next(action);
 };

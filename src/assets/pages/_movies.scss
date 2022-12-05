@@ -7,7 +7,7 @@
       .MuiOutlinedInput-notchedOutline {
         border-color: white;
       }
-    }    
+    }
 
     input {
       color: white;
@@ -17,4 +17,10 @@
       border-color: $white;
     }
   }
+}
+
+.infinite-scroll-component {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

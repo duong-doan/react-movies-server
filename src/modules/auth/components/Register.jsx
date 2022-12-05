@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import FormGroup from 'components/FormGroup';
 import BaseButton from 'components/BaseButton';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AUTH_ROUTES } from '../store/constant';
 import TextLineThrough from 'components/TextLineThrough';
 import useRegister from '../services/useRegister';
@@ -13,7 +13,9 @@ const Register = () => {
   return (
     <div className='login'>
       <div className='login__logo'>
-        <h2>DOAN MOVIE</h2>
+        <Link to='/'>
+          <h2>DOAN MOVIE</h2>
+        </Link>
       </div>
       <div className='login__body' style={{ height: '50%' }}>
         <form onSubmit={formik.handleSubmit} className='form-signin'>
@@ -81,14 +83,14 @@ const Register = () => {
         </form>
         <Typography variant='h6' color='primary'>
           Back to login.
-          <NavLink to={AUTH_ROUTES.LOGIN}>
+          <Link to={AUTH_ROUTES.LOGIN}>
             <TextLineThrough
               custom={{ display: 'inline-block', marginLeft: '5px' }}
               color='white'
             >
               LOGIN
             </TextLineThrough>
-          </NavLink>
+          </Link>
         </Typography>
       </div>
     </div>

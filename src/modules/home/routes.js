@@ -1,4 +1,4 @@
-import React from 'react';
+import PublicRoute from 'routes/components/PublicRoute';
 import Body from './containers/Body';
 
 const homeRoutes = [
@@ -6,7 +6,9 @@ const homeRoutes = [
     path: '/',
     auth: true,
     exact: true,
-    component: <Body />,
+    component: Body,
+    isCheckAuthenticated: false,
+    route: PublicRoute,
   },
 ];
 

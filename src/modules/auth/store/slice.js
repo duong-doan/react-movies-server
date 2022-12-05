@@ -15,7 +15,10 @@ export const authSlice = createSlice({
   reducers: {
     authLoginRequestSuccess: (state, action) => {
       const { email, accessToken } = action.payload;
-      localStorage.setItem(KEY_ACCESS_TOKEN_STR, JSON.stringify(accessToken));
+      localStorage.setItem(
+        KEY_ACCESS_TOKEN_STR,
+        JSON.stringify(`${accessToken}`)
+      );
       localStorage.setItem(KEY_USER_LOGIN, JSON.stringify({ email }));
       state.token = accessToken;
       state.user = { email };
