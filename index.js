@@ -1,6 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const io = require('socket.io')(3000, {
+  cors: {
+    origin: ['http://localhost:3001', 'http://localhost:8080'],
+  },
+});
 const forceSsl = require('force-ssl-heroku');
 const db = require('./src/config/db');
 const { ApolloServer } = require('apollo-server-express');
@@ -17,17 +22,17 @@ app.use(cors());
 // connect
 db.connect();
 
-app.use('/api', authRouter);
-app.use('/api', movieRouter);
-
 async function startApolloServer(typeDefs, resolvers) {
   const server = new ApolloServer({ typeDefs, resolvers });
   await server.start();
   server.applyMiddleware({ app, path: '/graphql' });
 
+  app.use('/api', authRouter);
+  app.use('/api', movieRouter);
+
   app.listen(process.env.PORT || 5000, () => {
     console.log(
-      `Server is listening on port http://localhost:5000${server.graphqlPath}`
+      `Server is listening on port http://localhost:${process.env.PORT}${server.graphqlPath}`
     );
   });
 }
