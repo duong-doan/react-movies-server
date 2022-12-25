@@ -5,7 +5,10 @@ const ObjectId = require('mongodb').ObjectId;
 const moviesController = {
   getListMovies: async (req, res) => {
     try {
-      const moviesList = await Movies.find().limit(20);
+      const { page } = req.body;
+      const DEFAULT_PER_PAGE = 20;
+      const offset = page * DEFAULT_PER_PAGE;
+      const moviesList = await Movies.find().limit(20).skip(offset);
       res.json({ moviesList });
       return moviesList;
     } catch (error) {
@@ -54,7 +57,7 @@ const moviesController = {
       const data = req.body;
       const { searchValue } = data;
       const moviesSearch = await Movies.find({
-        title: { $regex: `.*${searchValue}.*` },
+        title: { $regex: `${searchValue}`, $options: 'i' },
       });
       return res.json({ movies: moviesSearch });
     } catch (error) {

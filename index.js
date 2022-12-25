@@ -7,6 +7,7 @@ const io = require('socket.io')(3000, {
       'http://localhost:3001',
       'http://localhost:8080',
       'https://dazzling-speculoos-b396d3.netlify.app',
+      'http://14.225.205.199',
     ],
   },
 });
