@@ -1,6 +1,8 @@
 import { FORBIDDEN, UNAUTHORIZED } from 'utils/httpStatus';
 import { toast } from 'react-toastify';
 import { SIGNIN_FAILED, SIGNUP_FAILED } from 'modules/auth/store/constant';
+import { store } from './index';
+import { logoutRequest } from 'modules/auth/store/actions';
 
 const showError = (action) => {
   let errorMsg = '';
@@ -28,6 +30,7 @@ const HandleError = (action) => {
         toast.error('Unauthenticated');
         break;
       case FORBIDDEN:
+        store.dispath(logoutRequest());
         toast.error(message);
         break;
       default:

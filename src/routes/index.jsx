@@ -2,11 +2,8 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import routes from './routes';
 import { ToastContainer } from 'react-toastify';
-import Homepage from 'modules/home/containers/Body';
 
 function App() {
-  console.log('routes', routes);
-
   return (
     <>
       <Routes>
@@ -19,8 +16,7 @@ function App() {
           } = route;
 
           return (
-            // <Route element={<Homepage />} key={i}>
-            <Route element={<RouteComponent />}>
+            <Route key={i} element={<RouteComponent />}>
               {isCheckAuthenticated ? (
                 <Route
                   path={path}
@@ -30,7 +26,6 @@ function App() {
                 <Route path={path} element={<Component />} />
               )}
             </Route>
-            // </Route>
           );
         })}
       </Routes>

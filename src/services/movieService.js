@@ -3,8 +3,6 @@ import { MOVIES_API } from 'modules/movies/store/constants';
 
 export const getListMovieRequestApi = async (data) => {
   const { accessToken: token, page } = data;
-  console.log('token', token);
-  console.log('page', page);
   try {
     const res = await axios.post(
       MOVIES_API.GET_LIST,

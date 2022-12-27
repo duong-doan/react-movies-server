@@ -35,10 +35,9 @@ function* fetchAuthRegisterMid(action) {
   }
 }
 
-function* logoutRequestMid(action) {
-  const { navigate } = action.payload;
+function* logoutRequestMid() {
   yield localStorage.clear();
-  navigate('/login');
+  window.location.replace('/login');
 }
 
 export default function* authSaga() {

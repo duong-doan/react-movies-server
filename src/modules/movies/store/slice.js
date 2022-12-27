@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import uniq from 'lodash/uniq';
 import map from 'lodash/map';
 
 const initialState = {
   ids: [],
   list: {},
-  moviesList: [],
   moviesSearch: [],
   movieInfo: {},
   comments: [],
@@ -29,7 +29,7 @@ export const movieSlice = createSlice({
         };
         state.list = list;
 
-        ids = [...state.ids, item._id];
+        ids = uniq([...state.ids, item._id]);
         state.ids = ids;
       });
       state.moviesList = action.payload;
@@ -48,7 +48,8 @@ export const movieSlice = createSlice({
       state.loading = action.payload;
     },
     clearDataMovies: (state) => {
-      state.moviesList = [];
+      state.list = {};
+      state.ids = [];
     },
     clearMovieInfo: (state) => {
       state.movieInfo = {};

@@ -9,6 +9,8 @@ import SearchMovie from '../components/SearchMovie';
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import MovieCard from '../components/MovieCard';
+import BaseButton from 'components/BaseButton/index';
+import Spinner from 'components/Spinner/index';
 
 const List = () => {
   const dispatch = useDispatch();
@@ -22,14 +24,17 @@ const List = () => {
 
   useEffect(() => {
     dispatch(getListMovieRequest(page));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
+  useEffect(() => {
     return () => {
       dispatch(clearDataMovies());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, []);
 
-  const handleNextPage = () => {
+  const handleClickLoadMore = () => {
     setPage((prev) => prev + 1);
   };
 
@@ -39,8 +44,7 @@ const List = () => {
       <SearchMovie onChange={handleDebounceSearch} />
 
       <InfiniteScroll
-        dataLength={ids.length} //This is important field to render the next data
-        next={handleNextPage}
+        dataLength={ids.length}
         hasMore={true}
         loader={
           loading && (
@@ -62,17 +66,26 @@ const List = () => {
         ))}
       </InfiniteScroll>
 
-      {/* <div
-        style={{
-          width: '100%',
-          height: 'calc(100vh - 100px)',
-          position: 'relative',
-          marginTop: '60px',
-        }}
-      >
-        <button onClick={() => setPage((prev) => prev + 1)}>+</button>
-        {}
-      </div> */}
+      {ids.length && (
+        <BaseButton
+          onClick={handleClickLoadMore}
+          custom={{ margin: 'auto', height: '37px' }}
+        >
+          {loading ? (
+            <Spinner
+              customStyle={{
+                width: '20px',
+                height: '20px',
+                left: 'unset',
+                top: 'unset',
+                transform: 'translateX(-50%)',
+              }}
+            />
+          ) : (
+            'More'
+          )}
+        </BaseButton>
+      )}
     </Grid>
   );
 };

@@ -9,9 +9,9 @@ import { selectMoviesSearch } from '../store/selector';
 import { useNavigate } from 'react-router-dom';
 
 const SearchMovie = ({ onChange }) => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectValue, setSelectValue] = useState();
+  const [selectValue, setSelectValue] = useState(null);
   const [options, setOptions] = useState([]);
   const debounceSearch = useDebounce(search, 500);
   const moviesSearch = useSelector(selectMoviesSearch);
@@ -23,7 +23,6 @@ const SearchMovie = ({ onChange }) => {
 
   useEffect(() => {
     if (debounceSearch && !moviesSearch.length) {
-      console.log('lot do');
       setLoading(true);
     }
   }, [debounceSearch, moviesSearch]);
@@ -59,45 +58,36 @@ const SearchMovie = ({ onChange }) => {
     <Grid container marginTop='70px'>
       <Grid item sm={10} md={8} margin='auto'>
         <Autocomplete
+          id='free-solo-demo'
           freeSolo
-          options={options}
-          sx={{ width: '100%' }}
+          value={selectValue}
+          onChange={handleChangeValue}
+          inputValue={search}
+          onInputChange={handleChange}
+          options={options.map((option) => option)}
           renderInput={(params) => (
-            <Autocomplete
-              id='free-solo-demo'
-              freeSolo
-              value={selectValue}
-              onChange={handleChangeValue}
-              inputValue={search}
-              onInputChange={handleChange}
-              options={options.map((option) => option)}
-              renderInput={(params) => (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    position: 'relative',
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                position: 'relative',
+              }}
+            >
+              <TextField {...params} color='primary' label='Movie' />
+              {loading && (
+                <Spinner
+                  customStyle={{
+                    width: '20px',
+                    height: '20px',
+                    right: '10px',
+                    left: 'unset',
+                    top: 'unset',
+                    transform: 'translateX(-50%)',
                   }}
-                >
-                  <TextField {...params} color='primary' label='Movie' />
-                  {loading && (
-                    <Spinner
-                      customStyle={{
-                        width: '20px',
-                        height: '20px',
-                        right: '10px',
-                        left: 'unset',
-                        top: 'unset',
-                        transform: 'translateX(-50%)',
-                      }}
-                    />
-                  )}
-                </Box>
+                />
               )}
-            />
+            </Box>
           )}
-          renderOption={(props, option) => <li {...props}>{option.label}</li>}
-          style={{ margin: 'auto', color: 'white' }}
         />
       </Grid>
     </Grid>

@@ -5,14 +5,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import { selectIsAuthenticated, selectUser } from 'modules/auth/store/selector';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRequest } from 'modules/auth/store/actions';
-import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
 
   const handleClickExpand = () => {
     setOpen((prevState) => !prevState);
@@ -23,7 +21,7 @@ function Header() {
   };
 
   const handleClickLogout = () => {
-    dispatch(logoutRequest({ navigate }));
+    dispatch(logoutRequest());
   };
 
   return (
