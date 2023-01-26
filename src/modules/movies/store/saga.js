@@ -14,6 +14,7 @@ import {
   getMovieInfoSuccess,
   getCommentSuccess,
   getMovieSearchSuccess,
+  getMovieSearchFailed,
 } from './slice';
 
 function* fetchListMovieRequestMid(action) {
@@ -79,11 +80,9 @@ function* searchMoviesRequestMid(action) {
   const searchValue = action.payload;
   try {
     const response = yield call(searchMoviesApi, searchValue);
-    if (response.data.movies) {
-      yield put(getMovieSearchSuccess(response.data.movies));
-    }
+    yield put(getMovieSearchSuccess(response.data.movies));
   } catch (error) {
-    console.log(error);
+    yield put(getMovieSearchFailed(error));
   }
 }
 

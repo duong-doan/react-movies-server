@@ -9,6 +9,7 @@ const initialState = {
   movieInfo: {},
   comments: [],
   loading: false,
+  loadingSearch: false,
 };
 
 export const movieSlice = createSlice({
@@ -42,7 +43,15 @@ export const movieSlice = createSlice({
       state.comments = action.payload;
     },
     getMovieSearchSuccess: (state, action) => {
+      console.log('reducer', action.payload);
       state.moviesSearch = action.payload;
+      state.loadingSearch = false;
+    },
+    getMovieSearchFailed: (state) => {
+      state.loadingSearch = false;
+    },
+    updateLoadingSearch: (state, action) => {
+      state.loadingSearch = action.payload;
     },
     updateLoading: (state, action) => {
       state.loading = action.payload;
@@ -65,6 +74,8 @@ export const {
   clearMovieInfo,
   getCommentSuccess,
   getMovieSearchSuccess,
+  getMovieSearchFailed,
+  updateLoadingSearch,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

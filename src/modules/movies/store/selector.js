@@ -7,6 +7,7 @@ const selectCommentInMovieSelf = (state) => state.movies.comments;
 const selectMoviesSearchSelf = (state) => state.movies.moviesSearch;
 const selectListSelf = (state) => state.movies.list;
 const selectIdsSelf = (state) => state.movies.ids;
+const selectLoadingSearchSelf = (state) => state.movies.loadingSearch;
 
 export const selectMoviesList = createSelector(
   selectMoviesSelf,
@@ -35,4 +36,10 @@ export const selectMoviesSearch = createSelector(
 
 export const selectMovieById = (id) =>
   createSelector(selectListSelf, (state) => state[id]);
+
 export const selectIds = createSelector(selectIdsSelf, (state) => state);
+
+export const selectLoadingSearch = createSelector(
+  selectLoadingSearchSelf,
+  (state) => state
+);

@@ -4,18 +4,21 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { Grid, Box } from '@mui/material';
 import useDebounce from 'utils/hooks/useDebounce';
 import Spinner from 'components/Spinner/index';
-import { useSelector } from 'react-redux';
-import { selectMoviesSearch } from '../store/selector';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoadingSearch, selectMoviesSearch } from '../store/selector';
 import { useNavigate } from 'react-router-dom';
+import { updateLoadingSearch } from '../store/slice';
 
 const SearchMovie = ({ onChange }) => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(false);
   const [selectValue, setSelectValue] = useState(null);
   const [options, setOptions] = useState([]);
   const debounceSearch = useDebounce(search, 500);
+  const loading = useSelector(selectLoadingSearch);
   const moviesSearch = useSelector(selectMoviesSearch);
   const navigate = useNavigate();
+  console.log('loading', loading);
 
   const handleChange = (_, newValueSearch) => {
     setSearch(newValueSearch);
@@ -23,25 +26,36 @@ const SearchMovie = ({ onChange }) => {
 
   useEffect(() => {
     if (debounceSearch && !moviesSearch.length) {
-      setLoading(true);
+      dispatch(updateLoadingSearch(true));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounceSearch, moviesSearch]);
 
   useEffect(() => {
     if (moviesSearch.length) {
-      setLoading(false);
+      dispatch(updateLoadingSearch(false));
       setOptions(() => {
         return moviesSearch.map((item) => ({
           id: item._id,
           label: item.title,
         }));
       });
+      return;
     }
+    dispatch(updateLoadingSearch(false));
+    setOptions([
+      {
+        id: 'none',
+        label: 'No movies',
+      },
+    ]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moviesSearch]);
 
   useEffect(() => {
     if (!debounceSearch) {
-      setLoading(false);
+      dispatch(updateLoadingSearch(false));
       setOptions([]);
     }
     onChange(debounceSearch);
@@ -58,7 +72,6 @@ const SearchMovie = ({ onChange }) => {
     <Grid container marginTop='70px'>
       <Grid item sm={10} md={8} margin='auto'>
         <Autocomplete
-          id='free-solo-demo'
           freeSolo
           value={selectValue}
           onChange={handleChangeValue}

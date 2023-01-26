@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 const AuthenticatedRoute = () => {
   const isAuthenticated = getToken();
+
   useEffect(() => {
     if (!isAuthenticated) {
       toast.info('You must login first!');
