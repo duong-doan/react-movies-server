@@ -17,3 +17,12 @@ export const registerUserRequest = async (payload) => {
     return error;
   }
 };
+
+export const getUserInfoRequest = async (payload) => {
+  try {
+    const res = await axios.post('/user', payload);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
